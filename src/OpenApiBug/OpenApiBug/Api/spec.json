@@ -1,0 +1,247 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "System.Text.Json Playground Web API",
+    "version": "v0.2"
+  },
+  "paths": {
+    "/test": {
+      "get": {
+        "tags": [
+          "OpenApiBug"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RiskArraySourceMarginBreakdown"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CombinedContractMarginBreakdown": {
+        "required": [
+          "combinedContract",
+          "productDefinitionKeys",
+          "marginType",
+          "margin",
+          "initialMargin",
+          "maintenanceMargin",
+          "scanningRisk",
+          "interCommodityCredit",
+          "spreadCharge",
+          "novPremium",
+          "novFuture",
+          "nnovPremium",
+          "nnovFuture"
+        ],
+        "type": "object",
+        "properties": {
+          "combinedContract": {
+            "type": "string"
+          },
+          "productDefinitionKeys": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductDefinitionKey"
+            }
+          },
+          "marginType": {
+            "$ref": "#/components/schemas/MarginType"
+          },
+          "margin": {
+            "$ref": "#/components/schemas/CurrencyValuesWithUsd2"
+          },
+          "initialMargin": {
+            "$ref": "#/components/schemas/CurrencyValuesWithUsd2"
+          },
+          "maintenanceMargin": {
+            "$ref": "#/components/schemas/CurrencyValuesWithUsd2"
+          },
+          "scanningRisk": {
+            "$ref": "#/components/schemas/CurrencyValuesWithUsd2"
+          },
+          "interCommodityCredit": {
+            "$ref": "#/components/schemas/CurrencyValuesWithUsd2"
+          },
+          "spreadCharge": {
+            "$ref": "#/components/schemas/CurrencyValuesWithUsd2"
+          },
+          "novPremium": {
+            "$ref": "#/components/schemas/CurrencyValuesWithUsd2"
+          },
+          "novFuture": {
+            "$ref": "#/components/schemas/CurrencyValuesWithUsd2"
+          },
+          "nnovPremium": {
+            "$ref": "#/components/schemas/CurrencyValuesWithUsd2"
+          },
+          "nnovFuture": {
+            "$ref": "#/components/schemas/CurrencyValuesWithUsd2"
+          }
+        }
+      },
+      "CurrencyValue": {
+        "required": [
+          "currency",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "currency": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          }
+        }
+      },
+      "CurrencyValuesWithUsd": {
+        "required": [
+          "usdEquivalent",
+          "currencyValues"
+        ],
+        "type": "object",
+        "properties": {
+          "usdEquivalent": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "currencyValues": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CurrencyValue"
+            }
+          }
+        }
+      },
+      "CurrencyValuesWithUsd2": {
+        "required": [
+          "usdEquivalent",
+          "currencyValues"
+        ],
+        "type": "object",
+        "properties": {
+          "usdEquivalent": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "currencyValues": {
+            "$ref": "#/components/schemas/#/properties/margin/properties/currencyValues"
+          }
+        }
+      },
+      "MarginType": {
+        "type": "integer"
+      },
+      "MicExchange": {
+        "type": "integer"
+      },
+      "ProductDefinitionKey": {
+        "required": [
+          "exchange",
+          "productCode",
+          "productTypeCode"
+        ],
+        "type": "object",
+        "properties": {
+          "exchange": {
+            "$ref": "#/components/schemas/MicExchange"
+          },
+          "productCode": {
+            "type": "string"
+          },
+          "productTypeCode": {
+            "type": "string"
+          }
+        }
+      },
+      "RiskArraySource": {
+        "type": "integer"
+      },
+      "RiskArraySourceMarginBreakdown": {
+        "required": [
+          "riskArraySource",
+          "bucket",
+          "marginType",
+          "margin",
+          "initialMargin",
+          "maintenanceMargin",
+          "scanningRisk",
+          "interCommodityCredit",
+          "spreadCharge",
+          "novPremium",
+          "novFuture",
+          "nnovPremium",
+          "nnovFuture",
+          "combinedContractMarginBreakdowns"
+        ],
+        "type": "object",
+        "properties": {
+          "riskArraySource": {
+            "$ref": "#/components/schemas/RiskArraySource"
+          },
+          "bucket": {
+            "type": "string"
+          },
+          "marginType": {
+            "$ref": "#/components/schemas/MarginType"
+          },
+          "margin": {
+            "$ref": "#/components/schemas/CurrencyValuesWithUsd"
+          },
+          "initialMargin": {
+            "$ref": "#/components/schemas/CurrencyValuesWithUsd2"
+          },
+          "maintenanceMargin": {
+            "$ref": "#/components/schemas/CurrencyValuesWithUsd2"
+          },
+          "scanningRisk": {
+            "$ref": "#/components/schemas/CurrencyValuesWithUsd2"
+          },
+          "interCommodityCredit": {
+            "$ref": "#/components/schemas/CurrencyValuesWithUsd2"
+          },
+          "spreadCharge": {
+            "$ref": "#/components/schemas/CurrencyValuesWithUsd2"
+          },
+          "novPremium": {
+            "$ref": "#/components/schemas/CurrencyValuesWithUsd2"
+          },
+          "novFuture": {
+            "$ref": "#/components/schemas/CurrencyValuesWithUsd2"
+          },
+          "nnovPremium": {
+            "$ref": "#/components/schemas/CurrencyValuesWithUsd2"
+          },
+          "nnovFuture": {
+            "$ref": "#/components/schemas/CurrencyValuesWithUsd2"
+          },
+          "combinedContractMarginBreakdowns": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CombinedContractMarginBreakdown"
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "OpenApiBug"
+    }
+  ]
+}

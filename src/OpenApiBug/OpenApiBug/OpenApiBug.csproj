@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi"/>
+    <PackageReference Include="Microsoft.Extensions.ApiDescription.Server">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Scalar.AspNetCore"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Api\Generated\**"/>
+    <Compile Remove="Api\Generated\**"/>
+    <EmbeddedResource Remove="Api\Generated\**"/>
+    <Content Remove="Api\Generated\**"/>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OpenApiDocumentsDirectory>$(MSBuildProjectDirectory)/Api</OpenApiDocumentsDirectory>
+    <OpenApiGenerateDocumentsOptions>--file-name spec</OpenApiGenerateDocumentsOptions>
+  </PropertyGroup>
+
+</Project>
